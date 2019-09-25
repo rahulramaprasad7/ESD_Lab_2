@@ -1,7 +1,7 @@
 	     ORG 00h
 
 BEGIN:	 MOV P1, #00h 	    ;Clearing Port1
-		 MOV TMOD, #00h   	;Using Timer 0 in mode 0
+		 MOV TMOD, #01h   	;Using Timer 0 in mode 0
 	     MOV R1, #0Ah       ;Storing the count for 50ms delay
 	     CLR TR0
 	     CLR TF0
