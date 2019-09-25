@@ -6,9 +6,7 @@ BEGIN:	 MOV P1, #00h 	    ;Clearing Port1
 	     CLR TR0
 	     CLR TF0
 	     MOV IE, #82h       ;Enabling interrupt for Timer0
-	  
-LOOP: 	 AJMP LEDON      	;Continue to toggle the LED 
-      	  
+ 
 	     ORG 0Bh
 	     LJMP ISR_TMR0
 
@@ -21,10 +19,10 @@ LEDOFF:  CLR P1.0           ;Switching off LED on P1.1
          ACALL DELAY        ;Keeping the LED OFF for 50ms
 	     DJNZ R1, LEDOFF    ;Execute 50ms delay 10 times
 		 MOV R1, #0Ah       ;Restoring the count value
-		 AJMP LOOP
+		 AJMP LEDON
 	  
 DELAY:   MOV TH0, #4Bh      ;Upper nibble value for 50ms delay
-	     MOV TL0, #0FDh     ;Lower nibble value for 50ms delay
+	     MOV TL0, #0FCh     ;Lower nibble value for 50ms delay
 	     SETB TR0           ;Starting Timer0
 CHECK:   JNB TF0, CHECK     ;Waiting for TF0 flag to get set and trigger an interrupt
        
