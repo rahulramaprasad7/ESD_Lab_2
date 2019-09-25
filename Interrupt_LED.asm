@@ -30,9 +30,9 @@ CHECK:   JNB TF0, CHECK     ;Waiting for TF0 flag to get set and trigger an inte
        
 	   
 ISR_TMR0:SETB P1.1          ;Setting the port pin P1.1
-		 CLR P1.1           ;Clearing the port pin P1.1 
-		 CLR TR0
+		  CLR TR0
 		 CLR TF0
+		 CLR P1.1           ;Clearing the port pin P1.1 
 		 RETI 
 
 
